@@ -18,7 +18,7 @@ import java.util.*;
 //(60% 오답) 0은 더하면안된다. 그럼 자기자신이 나올테니까.
 
 //0이 3개 이상이라면 0도 set에 더해야한다.
-
+//(성공) map.get(0)을 => map.getOrDefault(sum,0)>=3 으로 바꿈
 
 
 
@@ -40,16 +40,16 @@ public class BOJ_1253_좋은수구하기 {
 
         // 2. 모든 합 경우의수 체크
         Set<Integer> set  = new HashSet<>();
-        for(int i=0; i<n; i++){
+        for(int i=0; i<n-1; i++){
             for(int j=i+1; j<n; j++){
                 int sum =  arr[i]+arr[j];
 
                 if(arr[i]==0 && arr[j]==0){
-                    if(map.get(0)>=3){
+                    if(map.getOrDefault(sum,0)>=3){
                         set.add(sum);
                     }
                 }else if(arr[i]==0 || arr[j]==0){
-                    if(map.get(0)>=2){
+                    if(map.getOrDefault(sum,0)>=2){
                         set.add(sum);
                     }
                 }else{
